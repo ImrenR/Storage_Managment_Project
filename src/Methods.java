@@ -41,10 +41,10 @@ public class Methods implements GirisCikisInterface {
                    productEntry();
                    break;
                case 4:
-                   System.out.println();
+                  placeOnShelf();
                    break;
                case 5:
-                   System.out.println();
+                   productExit();
                    break;
                case 6:
                    System.out.println();
@@ -61,6 +61,46 @@ public class Methods implements GirisCikisInterface {
        }
     }
 
+    private void productExit() {
+        System.out.println("Enter the product id to exit :");
+        int arananId = input.nextInt();
+        if(urunlerMap.containsKey(arananId)) {
+            System.out.println("Enter the product quantity : ");
+            int quantityExit= input.nextInt();
+
+            urunlerMap.get(arananId).setMiktar(urunlerMap.get(arananId).getMiktar()-quantityExit);
+
+        }else {
+            System.out.println("The product you want to exit cant found..");
+            System.out.println("Please enter a valid id :");
+            productExit();
+        }
+
+        System.out.println("You are being redirected back to the main menu...");
+        girisPaneli();
+
+
+    }
+
+    private void placeOnShelf() {
+        System.out.println("Enter the product id for product shelf:");
+        int arananId = input.nextInt();
+        if(urunlerMap.containsKey(arananId)) {
+            System.out.println("Enter the product shelf name : ");
+            String shelf= input.nextLine();
+
+            urunlerMap.get(arananId).setRaf(shelf);
+
+        }else {
+            System.out.println("The product shelf you are searching cant found..");
+            System.out.println("Please enter a valid shelf name :");
+            placeOnShelf(); //recursive call
+        }
+
+        System.out.println("You are being redirected back to the main menu...");
+        girisPaneli();
+    }
+
     private void productEntry() {
         System.out.println("Enter the product id :");
         int arananId = input.nextInt();
@@ -70,7 +110,12 @@ public class Methods implements GirisCikisInterface {
 
             urunlerMap.get(arananId).setMiktar(quantity+urunlerMap.get(arananId).getMiktar());
 
-        }else System.out.println("The product you are searching cant found..");
+        }else {
+            System.out.println("The product you are searching cant found..");
+            System.out.println("Please enter a valid id :");
+            productEntry();
+        }
+
         System.out.println("You are being redirected back to the main menu...");
         girisPaneli();
     }
@@ -87,7 +132,11 @@ public class Methods implements GirisCikisInterface {
         ,       avuc.getKey(),  avuc.getValue().getProductName(),
                 avuc.getValue().getProducter(),  avuc.getValue().getMiktar(),
                 avuc.getValue().getBirim(), avuc.getValue().getRaf()
-        );}
+        );
+
+    }
+        System.out.println("You are being redirected back to the main menu...");
+        girisPaneli();
     }
 
     private void productDefinition() {
