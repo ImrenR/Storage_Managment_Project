@@ -71,8 +71,10 @@ public class Methods implements GirisCikisInterface {
 
     for (Map.Entry<Integer,Products>avuc: urunlerSet) {
         System.out.printf("%d    %-8s       %-14s %3d          %-14s %s"
-        ,avuc.getKey(),avuc.getValue().getProductName(),avuc.getValue().getProducter(),avuc.getValue().getMiktar(),avuc.getValue().getBirim(), avuc.getValue().getRaf());
-    }
+        ,       avuc.getKey(),  avuc.getValue().getProductName(),
+                avuc.getValue().getProducter(),  avuc.getValue().getMiktar(),
+                avuc.getValue().getBirim(), avuc.getValue().getRaf()
+        );}
     }
 
     private void urunTanimlama() {
