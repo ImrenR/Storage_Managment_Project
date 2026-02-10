@@ -62,16 +62,18 @@ public class Methods implements GirisCikisInterface {
     }
 
     private void productExit() {
-        System.out.println("Enter the product id to exit :");
+        System.out.println("Enter the product id to reduce to product:");
         int arananId = input.nextInt();
         if(urunlerMap.containsKey(arananId)) {
             System.out.println("Enter the product quantity : ");
             int quantityExit= input.nextInt();
+if(urunlerMap.get(arananId).getMiktar()>= quantityExit) {
+    urunlerMap.get(arananId).setMiktar(urunlerMap.get(arananId).getMiktar()-quantityExit);
 
-            urunlerMap.get(arananId).setMiktar(urunlerMap.get(arananId).getMiktar()-quantityExit);
-
+}else System.out.println("The product quantity you want to reduce is above current product quantity! Try again");
+productExit();
         }else {
-            System.out.println("The product you want to exit cant found..");
+            System.out.println("The product you want to reduce cant found..");
             System.out.println("Please enter a valid id :");
             productExit();
         }
