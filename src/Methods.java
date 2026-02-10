@@ -13,6 +13,8 @@ public class Methods implements GirisCikisInterface {
 
 
 
+
+
     @Override
     public void girisPaneli() {
         System.out.println(Y + "========================== İŞLEMLER =======================\r\n"
