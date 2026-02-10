@@ -17,16 +17,16 @@ public class Methods implements GirisCikisInterface {
 
     @Override
     public void girisPaneli() {
-        System.out.println(Y + "========================== İŞLEMLER =======================\r\n"
-                + "   ____________________              ____________________   \n"
-                + "   | 1-URUN TANIMLAMA |              |  2-URUN LİSTELE  |   \n"
-                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
-                + "   ____________________              ____________________   \n"
-                + "   | 3-URUN GIRISI    |              |  4-URUN RAFA KOY |   \n"
-                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
-                + "   ____________________              ____________________   \n"
-                + "   | 5-URUN CIKISI    |              |  6-BITIRME       |   \n"
-                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  " + R);
+        System.out.println(Y + "========================== OPERATIONS =======================\r\n"
+                + "   _______________________           _______________________   \n"
+                + "   | 1-PRODUCT DEFINITION |          |  2-PRODUCT LIST  | \n"
+                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
+                + "   _____________________              ______________________   \n"
+                + "   | 3-PRODUCT ENTRY |                | 4-PRODUCT ON SHELF | \n"
+                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
+                + "   _____________________              ______________________   \n"
+                + "   | 5- PRODUCT EXIT  |              |  6-EXIT |   \n"
+                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯             ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  " + R);
 
 
         System.out.println("Yapmak istediginiz islemi seciniz");
@@ -85,14 +85,12 @@ public class Methods implements GirisCikisInterface {
         System.out.print("Urun bilgileri giriniz: ");
 
         System.out.print("Urun ismi giriniz:");
-        input.next();
+        input.nextLine();
         String urunIsmi=input.nextLine();
         System.out.print("Uretici ismi giriniz :");
         input.next();
         String producter= input.nextLine();
         System.out.print("Urun birimi giriniz: ");
-        input.next
-                ();
         String birim=input.nextLine();
     Products urun = new Products(id,urunIsmi,producter,birim);
     urunlerMap.put(id,urun);
