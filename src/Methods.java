@@ -15,7 +15,16 @@ public class Methods implements GirisCikisInterface {
 
     @Override
     public void girisPaneli() {
-
+        System.out.println(Y + "========================== İŞLEMLER =======================\r\n"
+                + "   ____________________              ____________________   \n"
+                + "   | 1-URUN TANIMLAMA |              |  2-URUN LİSTELE  |   \n"
+                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
+                + "   ____________________              ____________________   \n"
+                + "   | 3-URUN GIRISI    |              |  4-URUN RAFA KOY |   \n"
+                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
+                + "   ____________________              ____________________   \n"
+                + "   | 5-URUN CIKISI    |              |  6-BITIRME       |   \n"
+                + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯              ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  " + R);
     }
 
     @Override
