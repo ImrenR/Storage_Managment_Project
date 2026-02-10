@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Methods implements GirisCikisInterface {
     public static final String W = "\u001B[37m";
@@ -39,7 +36,7 @@ public class Methods implements GirisCikisInterface {
                    urunTanimlama();
                    break;
                case 2:
-                   System.out.println();
+                   urunListele();
                    break;
                case 3:
                    System.out.println();
@@ -65,7 +62,33 @@ public class Methods implements GirisCikisInterface {
        }
     }
 
+    private void urunListele() {
+   Set<Map.Entry<Integer,Products>> urunlerSet=urunlerMap.entrySet(); // urunTanimlama meth ile urunlerMap e atilan objler depolanacagi set tanimlandi
+    // entrySet yaparak valuelari alirim
+
+        System.out.println("id       ismi         ureticisi       miktari       birimi         raf" +
+                "\n----------------------------------------------------------------------");
+    }
+
     private void urunTanimlama() {
+        System.out.print("Urun bilgileri giriniz: ");
+
+        System.out.print("Urun ismi giriniz:");
+        input.next();
+        String urunIsmi=input.nextLine();
+        System.out.print("Uretici ismi giriniz :");
+        input.next();
+        String producter= input.nextLine();
+        System.out.print("Urun birimi giriniz: ");
+        input.next
+                ();
+        String birim=input.nextLine();
+    Products urun = new Products(id,urunIsmi,producter,birim);
+    urunlerMap.put(id,urun);
+    id++;
+        System.out.println("Urun bilgileri basariyla isleme alindi!");
+        System.out.println("Tekrar giris paneline yonlendiriliyorsunuz...");
+        girisPaneli();
     }
 
     @Override
