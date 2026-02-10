@@ -33,7 +33,8 @@ Storage_Managment_Project
 ├── GirisCikisInterface.java # Interface for menu actions
 ├── Runner.java # Main class to start the application
 ├── Methods.java # Core logic and menu operations
-└── Products.java # Product model class```
+└── Products.java # Product model class
+```
 
 
 ---
