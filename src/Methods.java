@@ -68,6 +68,11 @@ public class Methods implements GirisCikisInterface {
 
         System.out.println("id       ismi         ureticisi       miktari       birimi         raf" +
                 "\n----------------------------------------------------------------------");
+
+    for (Map.Entry<Integer,Products>avuc: urunlerSet) {
+        System.out.printf("%d    %-8s       %-14s %3d          %-14s %s"
+        ,avuc.getKey(),avuc.getValue().getProductName(),avuc.getValue().getProducter(),avuc.getValue().getMiktar(),avuc.getValue().getBirim(), avuc.getValue().getRaf());
+    }
     }
 
     private void urunTanimlama() {
