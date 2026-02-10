@@ -11,10 +11,6 @@ public class Methods implements GirisCikisInterface {
     static HashMap<Integer,Products> urunlerMap=new HashMap<>(); // urunler obkesini store edecek bos map
 
 
-
-
-
-
     @Override
     public void girisPaneli() {
         System.out.println(Y + "========================== OPERATIONS =======================\r\n"
@@ -32,18 +28,17 @@ public class Methods implements GirisCikisInterface {
         System.out.println("Yapmak istediginiz islemi seciniz");
        try {
 
-
            int secim = input.nextInt();
 
            switch (secim) {
                case 1:
-                   urunTanimlama();
+                   productDefinition();
                    break;
                case 2:
-                   urunListele();
+                   productList();
                    break;
                case 3:
-                   System.out.println();
+                   productEntry();
                    break;
                case 4:
                    System.out.println();
@@ -61,16 +56,30 @@ public class Methods implements GirisCikisInterface {
            }
        }catch (InputMismatchException e){
            System.out.println("Sayi disinda bir karakter girilemez");
-           input.nextLine(); // dumy : hayalet komut.. Aabir bos komut aciyorum ki yeni komuta girebilsin pattern erro vermesin
+           input.nextLine(); // dumy : hayalet komut.. bir bos komut aciyorum ki yeni komuta girebilsin pattern erro vermesin
            girisPaneli();
        }
     }
 
-    private void urunListele() {
+    private void productEntry() {
+        System.out.println("Enter the product id :");
+        int arananId = input.nextInt();
+        if(urunlerMap.containsKey(arananId)) {
+            System.out.println("Enter the product quantity : ");
+            int quantity= input.nextInt();
+
+            urunlerMap.get(arananId).setMiktar(quantity+urunlerMap.get(arananId).getMiktar());
+
+        }else System.out.println("The product you are searching cant found..");
+        System.out.println("You are being redirected back to the main menu...");
+        girisPaneli();
+    }
+
+    private void productList() {
    Set<Map.Entry<Integer,Products>> urunlerSet=urunlerMap.entrySet(); // urunTanimlama meth ile urunlerMap e atilan objler depolanacagi set tanimlandi
     // entrySet yaparak valuelari alirim
 
-        System.out.println("id       ismi         ureticisi       miktari       birimi         raf" +
+        System.out.println("Id       Name       Producter       Quantity       Unit       Shelf" +
                 "\n----------------------------------------------------------------------");
 
     for (Map.Entry<Integer,Products>avuc: urunlerSet) {
@@ -81,27 +90,27 @@ public class Methods implements GirisCikisInterface {
         );}
     }
 
-    private void urunTanimlama() {
-        System.out.print("Urun bilgileri giriniz: ");
+    private void productDefinition() {
+        System.out.print("Enter the product information");
 
-        System.out.print("Urun ismi giriniz:");
+        System.out.print("Enter the name of product :");
         input.nextLine();
         String urunIsmi=input.nextLine();
-        System.out.print("Uretici ismi giriniz :");
+        System.out.print("Enter the name of producter :");
         input.next();
         String producter= input.nextLine();
-        System.out.print("Urun birimi giriniz: ");
+        System.out.print("Enter product unit : ");
         String birim=input.nextLine();
     Products urun = new Products(id,urunIsmi,producter,birim);
     urunlerMap.put(id,urun);
     id++;
-        System.out.println("Urun bilgileri basariyla isleme alindi!");
-        System.out.println("Tekrar giris paneline yonlendiriliyorsunuz...");
+        System.out.println("Product information has been successfully recorded!");
+        System.out.println("You are being redirected back to the main menu...");
         girisPaneli();
     }
 
     @Override
     public void cikisYap() {
-        System.out.println("App ten cikisiniz yapildi");
+        System.out.println("You are exiting from app...");
     }
 }
