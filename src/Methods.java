@@ -47,11 +47,12 @@ public class Methods implements GirisCikisInterface {
                    productExit();
                    break;
                case 6:
-                   System.out.println();
+                   appExit();
                    break;
 
                default:
                    System.out.println("hatali giris yaptiniz tekrar deneyin");
+                   girisPaneli();
                    break;
            }
        }catch (InputMismatchException e){
@@ -59,6 +60,10 @@ public class Methods implements GirisCikisInterface {
            input.nextLine(); // dumy : hayalet komut.. bir bos komut aciyorum ki yeni komuta girebilsin pattern erro vermesin
            girisPaneli();
        }
+    }
+
+    private void appExit() {
+        System.out.println("you are exiting the program...");
     }
 
     private void productExit() {
