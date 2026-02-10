@@ -11,6 +11,8 @@ public class Methods implements GirisCikisInterface {
     static HashMap<Integer,Products> urunlerMap=new HashMap<>(); // urunler obkesini store edecek bos map
 
 
+
+
     @Override
     public void girisPaneli() {
         System.out.println(Y + "========================== İŞLEMLER =======================\r\n"
