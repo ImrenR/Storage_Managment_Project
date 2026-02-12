@@ -1,4 +1,4 @@
-# Storage Management Project (Console Application- JAVA)
+# Storage Management Project (Console Application)
 
 ## 📦 Project Overview
 Storage Management Project is a **Java console-based application** designed to manage products in a warehouse system.  
