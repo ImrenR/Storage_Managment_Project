@@ -20,10 +20,10 @@ public class Methods implements EntryExitInterface{
                 + "   | 1-PRODUCT DEFINITION |          |  2-PRODUCT LIST  | \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
                 + "   _____________________              ______________________   \n"
-                + "   | 3-PRODUCT ENTRY |                | 4-PRODUCT ON SHELF | \n"
+                + "   | 3-PRODUCT ENTRY |                | 4-REDUCE PRODUCT | \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
                 + "   _____________________              ______________________   \n"
-                + "   | 5- REDUCE PRODUCT  |              |  6-EXIT |   \n"
+                + "   | 5- NAME THE SHELF |               |  6-EXIT |   \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯             ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  " + R);
 try {
     System.out.println("Please choose an option you want to proceed ..");
@@ -46,6 +46,7 @@ try {
             productOnShelf();
             break;
         case 6:
+            exitTheApp();
             break;
         default:
             System.out.println("Something went wrong");
@@ -59,8 +60,27 @@ try {
 
     }
 
-    private void productOnShelf() {
+    private void exitTheApp() {
+        System.out.println("You are exiting the account ... See you again !");
+    }
 
+    private void productOnShelf() {
+        System.out.println("Please enter the id number to name product shelf");
+
+        int wantedId= input.nextInt();
+
+        if(urunlerMap.containsKey(wantedId)) {
+            System.out.println("Please enter the name of shelf  : ");
+            String shelfName = input.nextLine();
+
+          urunlerMap.get(wantedId).setShelf(shelfName);
+
+        }else {
+            System.out.println("There is no product with this id in the list, please try again..");
+           productOnShelf();
+        }
+        System.out.println("You are directing to the entry panel");
+        girisPaneli();
 
     }
 
@@ -71,11 +91,13 @@ try {
         if(urunlerMap.containsKey(wantedId)) {
             System.out.println("Please enter the quantity you wanted to reduce : ");
             int reduceQuantity = input.nextInt();
-
             if(urunlerMap.get(wantedId).getQuantity() >= reduceQuantity) {
                 urunlerMap.get(wantedId).setQuantity( urunlerMap.get(wantedId).getQuantity()- reduceQuantity);
-            }else System.out.println("The quantity you try to reduce above current quantity, please try again");
-            productReducing();
+
+            }else {
+                System.out.println("The quantity you try to reduce above current quantity, please try again");
+                productReducing();
+            }
 
         }else System.out.println("There is no product with the id you entered in the list, please try again..");
         System.out.println("You are directing to the entry panel");
@@ -115,6 +137,7 @@ try {
             System.out.println(" ");
 
         }// end foreach
+        System.out.println(" ");
         System.out.println("You been added your product info succesfully");
         System.out.println("You are directing to the entry panel");
         girisPaneli();
@@ -130,7 +153,6 @@ try {
         String producer = input.nextLine();
 
         System.out.println("The unit : ");
-        input.next();
         String unit= input.nextLine();
 
 
