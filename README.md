@@ -30,7 +30,7 @@ This project is **still in progress** and is being developed as a learning proje
 ```
 Storage_Managment_Project
 │
-├── GirisCikisInterface.java # Interface for menu actions
+├── EntryExitInterface.java # Interface for menu actions
 ├── Runner.java # Main class to start the application
 ├── Methods.java # Core logic and menu operations
 └── Products.java # Product model class
@@ -41,7 +41,7 @@ Storage_Managment_Project
 
 ## 📌 Class Descriptions
 
-### `GirisCikisInterface`
+### `EntryExitInterface`
 Defines the main input/output actions for the application:
 - `girisPaneli()`
 - `cikisYap()`
