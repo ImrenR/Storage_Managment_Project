@@ -1,14 +1,16 @@
 import java.util.*;
 
-public class Methods implements EntryExitInterface {
+public class Methods implements EntryExitInterface{
     public static final String W = "\u001B[37m";
     public static final String R = "\u001B[31m";
     public static final String G = "\u001B[32m";
     public static final String Y = "\u001B[33m";
     public static final String B = "\u001B[34m";
+
+
     static Scanner input= new Scanner(System.in);
     static int id=1000;
-    static HashMap<Integer,Products> urunlerMap=new HashMap<>(); // urunler obkesini store edecek bos map
+    static HashMap<Integer,Products> urunlerMap= new HashMap<>(); // able to store values and keys empty map has been created
 
 
     @Override
@@ -23,150 +25,90 @@ public class Methods implements EntryExitInterface {
                 + "   _____________________              ______________________   \n"
                 + "   | 5- PRODUCT EXIT  |              |  6-EXIT |   \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯             ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  " + R);
+try {
+    System.out.println("Please choose an option you want to proceed ..");
+    int option = input.nextInt();
 
-
-        System.out.println("Yapmak istediginiz islemi seciniz");
-       try {
-
-           int secim = input.nextInt();
-
-           switch (secim) {
-               case 1:
-                   productDefinition();
-                   break;
-               case 2:
-                   productList();
-                   break;
-               case 3:
-                   productEntry();
-                   break;
-               case 4:
-                  placeOnShelf();
-                   break;
-               case 5:
-                   productExit();
-                   break;
-               case 6:
-                   appExit();
-                   break;
-
-               default:
-                   System.out.println("hatali giris yaptiniz tekrar deneyin");
-                   girisPaneli();
-                   break;
-           }
-       }catch (InputMismatchException e){
-           System.out.println("Sayi disinda bir karakter girilemez");
-           input.nextLine(); // dumy : hayalet komut.. bir bos komut aciyorum ki yeni komuta girebilsin pattern erro vermesin
-           girisPaneli();
-       }
+    switch (option) {
+        case 1:
+            productDefinition();
+            break;
+        case 2:
+            productList();
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        default:
+            System.out.println("Something went wrong");
+            break;
     }
 
-    private void appExit() {
-        System.out.println("you are exiting the program...");
-    }
 
-    private void productExit() {
-        System.out.println("Enter the product id to reduce to product:");
-        int arananId = input.nextInt();
-        if(urunlerMap.containsKey(arananId)) {
-            System.out.println("Enter the product quantity : ");
-            int quantityExit= input.nextInt();
-if(urunlerMap.get(arananId).getMiktar()>= quantityExit) {
-    urunlerMap.get(arananId).setMiktar(urunlerMap.get(arananId).getMiktar()-quantityExit);
+}catch (InputMismatchException e){
+    System.out.println("It s not a number. Please choose a number to able to proceed!");
+}
 
-}else System.out.println("The product quantity you want to reduce is above current product quantity! Try again");
-productExit();
-        }else {
-            System.out.println("The product you want to reduce cant found..");
-            System.out.println("Please enter a valid id :");
-            productExit();
-        }
-
-        System.out.println("You are being redirected back to the main menu...");
-        girisPaneli();
-
-
-    }
-
-    private void placeOnShelf() {
-        System.out.println("Enter the product id for product shelf:");
-        int arananId = input.nextInt();
-        if(urunlerMap.containsKey(arananId)) {
-            System.out.println("Enter the product shelf name : ");
-            String shelf= input.nextLine();
-
-            urunlerMap.get(arananId).setRaf(shelf);
-
-        }else {
-            System.out.println("The product shelf you are searching cant found..");
-            System.out.println("Please enter a valid shelf name :");
-            placeOnShelf(); //recursive call
-        }
-
-        System.out.println("You are being redirected back to the main menu...");
-        girisPaneli();
-    }
-
-    private void productEntry() {
-        System.out.println("Enter the product id :");
-        int arananId = input.nextInt();
-        if(urunlerMap.containsKey(arananId)) {
-            System.out.println("Enter the product quantity : ");
-            int quantity= input.nextInt();
-
-            urunlerMap.get(arananId).setMiktar(quantity+urunlerMap.get(arananId).getMiktar());
-
-        }else {
-            System.out.println("The product you are searching cant found..");
-            System.out.println("Please enter a valid id :");
-            productEntry();
-        }
-
-        System.out.println("You are being redirected back to the main menu...");
-        girisPaneli();
     }
 
     private void productList() {
-   Set<Map.Entry<Integer,Products>> urunlerSet=urunlerMap.entrySet(); // urunTanimlama meth ile urunlerMap e atilan objler depolanacagi set tanimlandi
-    // entrySet yaparak valuelari alirim
 
-        System.out.println("Id       Name       Producter       Quantity       Unit       Shelf" +
+        Set<Map.Entry<Integer,Products>> urunListesi = urunlerMap.entrySet();
+        System.out.println("id       product name         producer       quantity       unit         shelf" +
                 "\n----------------------------------------------------------------------");
 
-    for (Map.Entry<Integer,Products>avuc: urunlerSet) {
-        System.out.printf("%d    %-8s       %-14s %3d          %-14s %s"
-        ,       avuc.getKey(),  avuc.getValue().getProductName(),
-                avuc.getValue().getProducter(),  avuc.getValue().getMiktar(),
-                avuc.getValue().getBirim(), avuc.getValue().getRaf()
-        );
+        for(Map.Entry<Integer,Products> avuc:urunListesi) {
+            System.out.printf("%d    %-8s       %-14s %3d          %-14s %s"
 
-    }
-        System.out.println("You are being redirected back to the main menu...");
+          ,avuc.getKey()
+          ,avuc.getValue().getProductName()
+          ,avuc.getValue().getProducter()
+          ,avuc.getValue().getQuantity()
+          ,avuc.getValue().getUnit()
+          ,avuc.getValue().getShelf()
+            );
+            System.out.println(" ");
+
+        }// end foreach
+        System.out.println("You been added your product info succesfully");
+        System.out.println("You are directing to the entry panel");
         girisPaneli();
     }
 
     private void productDefinition() {
-        System.out.print("Enter the product information");
+        System.out.println("Please enter the products infromation");
+        System.out.println("Product name :");
+        input.nextLine(); // dumy entry
+        String productName = input.nextLine();
 
-        System.out.print("Enter the name of product :");
-        input.nextLine();
-        String urunIsmi=input.nextLine();
-        System.out.print("Enter the name of producter :");
+        System.out.println("Producer name : ");
+        String producer = input.nextLine();
+
+        System.out.println("The unit : ");
         input.next();
-        String producter= input.nextLine();
-        System.out.print("Enter product unit : ");
-        String birim=input.nextLine();
-    Products urun = new Products(id,urunIsmi,producter,birim);
-    urunlerMap.put(id,urun);
-    id++;
-        System.out.println("Product information has been successfully recorded!");
-        System.out.println("You are being redirected back to the main menu...");
+        String unit= input.nextLine();
+
+
+        Products urun = new Products(productName,producer,unit,id);
+        urunlerMap.put(id,urun);
+        id++;
+        System.out.println("Has been added successfully..");
+        System.out.println("You are directing to the entry panel");
         girisPaneli();
     }
 
     @Override
     public void cikisYap() {
-        System.out.println("You are exiting from app...");
+        System.out.println("You are exiting the app..");
     }
+
+
+
+
+
 }
