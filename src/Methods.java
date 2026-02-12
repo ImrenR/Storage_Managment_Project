@@ -23,7 +23,7 @@ public class Methods implements EntryExitInterface{
                 + "   | 3-PRODUCT ENTRY |                | 4-PRODUCT ON SHELF | \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯               ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯   \n"
                 + "   _____________________              ______________________   \n"
-                + "   | 5- PRODUCT EXIT  |              |  6-EXIT |   \n"
+                + "   | 5- REDUCE PRODUCT  |              |  6-EXIT |   \n"
                 + "   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯             ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  " + R);
 try {
     System.out.println("Please choose an option you want to proceed ..");
@@ -37,10 +37,13 @@ try {
             productList();
             break;
         case 3:
+            productEntry();
             break;
         case 4:
+            productReducing();
             break;
         case 5:
+            productOnShelf();
             break;
         case 6:
             break;
@@ -56,10 +59,47 @@ try {
 
     }
 
+    private void productOnShelf() {
+
+
+    }
+
+    private void productReducing() {
+        System.out.println("Please enter the id number of product you want to reduce");
+        int wantedId= input.nextInt();
+
+        if(urunlerMap.containsKey(wantedId)) {
+            System.out.println("Please enter the quantity you wanted to reduce : ");
+            int reduceQuantity = input.nextInt();
+
+            if(urunlerMap.get(wantedId).getQuantity() >= reduceQuantity) {
+                urunlerMap.get(wantedId).setQuantity( urunlerMap.get(wantedId).getQuantity()- reduceQuantity);
+            }else System.out.println("The quantity you try to reduce above current quantity, please try again");
+            productReducing();
+
+        }else System.out.println("There is no product with the id you entered in the list, please try again..");
+        System.out.println("You are directing to the entry panel");
+        girisPaneli();
+    }
+
+    private void productEntry() {
+        System.out.println("Please enter the id number of product you want to get");
+        int wantedId= input.nextInt();
+
+        if(urunlerMap.containsKey(wantedId)) {
+            System.out.println("Please enter the quantity you wanted to add : ");
+            int wantedQuantity = input.nextInt();
+            urunlerMap.get(wantedId).setQuantity(wantedQuantity + urunlerMap.get(wantedId).getQuantity());
+        }else System.out.println("There is no product with the id you entered in the list, please try again..");
+        System.out.println("You are directing to the entry panel");
+        girisPaneli();
+
+    }
+
     private void productList() {
 
         Set<Map.Entry<Integer,Products>> urunListesi = urunlerMap.entrySet();
-        System.out.println("id       product name         producer       quantity       unit         shelf" +
+        System.out.println("id     product name      producer    quantity     unit        shelf" +
                 "\n----------------------------------------------------------------------");
 
         for(Map.Entry<Integer,Products> avuc:urunListesi) {
