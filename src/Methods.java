@@ -66,12 +66,11 @@ try {
 
     private void productOnShelf() {
         System.out.println("Please enter the id number to name product shelf");
-
         int wantedId= input.nextInt();
 
         if(urunlerMap.containsKey(wantedId)) {
             System.out.println("Please enter the name of shelf  : ");
-            String shelfName = input.nextLine();
+            String shelfName = input.next();
 
           urunlerMap.get(wantedId).setShelf(shelfName);
 
@@ -79,9 +78,9 @@ try {
             System.out.println("There is no product with this id in the list, please try again..");
            productOnShelf();
         }
+
         System.out.println("You are directing to the entry panel");
         girisPaneli();
-
     }
 
     private void productReducing() {
@@ -121,11 +120,11 @@ try {
     private void productList() {
 
         Set<Map.Entry<Integer,Products>> urunListesi = urunlerMap.entrySet();
-        System.out.println("id     product name      producer    quantity     unit        shelf" +
+        System.out.println("id     product name      producer    quantity     unit           shelf" +
                 "\n----------------------------------------------------------------------");
 
         for(Map.Entry<Integer,Products> avuc:urunListesi) {
-            System.out.printf("%d    %-8s       %-14s %3d          %-14s %s"
+            System.out.printf("%d    %-10s       %-11s %3d          %-14s %s"
 
           ,avuc.getKey()
           ,avuc.getValue().getProductName()
