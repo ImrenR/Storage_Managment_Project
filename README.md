@@ -6,7 +6,7 @@ The application allows users to define products, list them, and manage basic inv
 
 This project is **still in progress** and is being developed as a learning project to improve Java fundamentals, object-oriented programming (OOP), and data structures.
 
-![Demo](src/assets/demo.mov)
+
 
 
 ---
