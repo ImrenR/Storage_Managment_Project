@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Methods implements GirisCikisInterface {
+public class Methods implements EntryExitInterface {
     public static final String W = "\u001B[37m";
     public static final String R = "\u001B[31m";
     public static final String G = "\u001B[32m";
